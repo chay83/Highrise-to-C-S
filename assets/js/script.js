@@ -1,34 +1,37 @@
-/* Author: 
+$(function() {
 
-*/
 
-$(document).ready(function(){
 	$('form').submit(function(event){
+		
+		event.preventDefault(); 
+		
 		$('table').addClass('loading');
 		$('#submit').attr('disabled','disabled');
 		
-	    /* stop form from submitting normally */
-	    event.preventDefault(); 
-	        
-	    /* get some values from elements on the page: */
 	    var $form = $( this ),
 	        url = $form.attr( 'action' );
-	
-	    /* Send the data using post and put the results in a div */
+		
 	    $.post( url, $(this).serialize(),
-	      function( data ) {
-	      
-	         $('header').html($(data).find('header').html());
+	      function( data ) {	      
+	      	 $results = $(data).find('header').html();
+	         $($results).find('ul li').each(function(){
+	         	var $message = $('<span class="message" />');
+	         	$message.text($(this).text());
+	         	$message.appendTo($('div.row:eq("' + $(this).index() + '")'));
+	         });
 	         $('table').removeClass('loading');
-	         $('#submit').removeAttr('disabled');
-	         
+	         $('#submit').removeAttr('disabled');	         
 	      }
 	    );
 		
 		return false;	
+		
 	});
 	
+	
+	
 	$('a.add').live('click',function(e){
+		
 		e.preventDefault();
 		
 		$row = $(this).closest('div.row');		
@@ -39,13 +42,19 @@ $(document).ready(function(){
 		}else{
 			$('a.remove').hide();
 		}
-	
+		
 		return false;
+		
 	});
+	
+	
+	
 	$('a.remove').live('click',function(e){
+		
 		e.preventDefault();
 		
-		$row = $(this).closest('div.row');		
+		$row = $(this).closest('div.row');	
+			
 		$row.hide('slow',function(){
 			$(this).remove();
 			if($('div.row').size() == 1){
@@ -53,9 +62,8 @@ $(document).ready(function(){
 			}	
 		});
 		
-		return false;
+		return false;	
 		
-		
-	
 	});
+		
 });

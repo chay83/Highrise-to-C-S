@@ -238,11 +238,11 @@ div#main table{
 	width: 100%;
 	
 }
-div#main table tr{
-	background: url("../img/arrow.png") no-repeat scroll 48% 4px transparent;
+div.row{
+	background: url("../img/arrow.png") no-repeat scroll 48% 4px;
 }
 div.row{
-	background: none repeat scroll 0 0 #fff;
+	background-color:#fff;
 	border: 8px solid #68abf0;
 	border-radius: 64px;
 	-webkit-transition: box-shadow 1s ease;
@@ -303,6 +303,9 @@ div.row ul li a.remove{
 }
 div.row:hover{
 	box-shadow: 0 0 36px -11px #000000;
+}
+span.message{
+	
 }
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
