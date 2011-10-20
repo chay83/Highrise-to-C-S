@@ -1,0 +1,6 @@
+[submodule "lib/createsend"]
+	path = lib/createsend
+	url = https://github.com/campaignmonitor/createsend-php.git
+[submodule "lib/highrise"]
+	path = lib/highrise
+	url = https://github.com/ignaciovazquez/Highrise-PHP-Api.git
